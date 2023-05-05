@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity() {
 
         btAbrirNovaTela.setOnClickListener {
             // Criar uma Intent para abrir a nova tela
-            val abrirNovaTela = Intent(this, ResultadoActivity::class.java)
+            val abrirNovaTelaIntent = Intent(this, ResultadoActivity::class.java)
 
             // Registra a Intent no Android
-            startActivity(abrirNovaTela)
+            startActivity(abrirNovaTelaIntent)
         }
     }
 }
