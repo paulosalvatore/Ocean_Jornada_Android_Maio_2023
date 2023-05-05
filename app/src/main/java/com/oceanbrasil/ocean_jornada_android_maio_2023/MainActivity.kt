@@ -49,6 +49,13 @@ class MainActivity : AppCompatActivity() {
             // Criar uma Intent para abrir a nova tela
             val abrirNovaTelaIntent = Intent(this, ResultadoActivity::class.java)
 
+            // Pegamos a informação digitada no etNome, que vem como CharSequence
+            // Convertemos para String, para pegá-la como String lá na outra tela
+            val nomeDigitado = etNome.text.toString()
+
+            // Inserimos as informações novas na Intent
+            abrirNovaTelaIntent.putExtra("NOME_DIGITADO", nomeDigitado)
+
             // Registra a Intent no Android
             startActivity(abrirNovaTelaIntent)
         }
