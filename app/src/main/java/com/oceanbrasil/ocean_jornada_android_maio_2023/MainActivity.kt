@@ -1,10 +1,11 @@
 package com.oceanbrasil.ocean_jornada_android_maio_2023
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +40,17 @@ class MainActivity : AppCompatActivity() {
 
                 tvResultado.text = etNome.text
             }
+        }
+
+        // Abrir Nova Tela
+        val btAbrirNovaTela = findViewById<Button>(R.id.btAbrirNovaTela)
+
+        btAbrirNovaTela.setOnClickListener {
+            // Criar uma Intent para abrir a nova tela
+            val abrirNovaTela = Intent(this, ResultadoActivity::class.java)
+
+            // Registra a Intent no Android
+            startActivity(abrirNovaTela)
         }
     }
 }
