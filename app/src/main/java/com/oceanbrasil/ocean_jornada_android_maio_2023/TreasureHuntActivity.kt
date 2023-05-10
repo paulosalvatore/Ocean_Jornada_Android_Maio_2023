@@ -68,6 +68,9 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
             // Exibe uma mensagem solicitando a permissão da localização
             Toast.makeText(this, "Permita a localização.", Toast.LENGTH_LONG).show()
 
+            // Solicitar a permissão
+            requestLocationPermission()
+
             // Encerra a execução da função, pois não temos permissão para ver a localização
             return
         }
@@ -76,7 +79,7 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
 
         // Definimos um provedor de localização, geralmente NETWORK (placa de internet) ou GPS (localização)
-        val locationProvider = LocationManager.GPS_PROVIDER
+        val locationProvider = LocationManager.NETWORK_PROVIDER
 
         // Pegamos a localização atual (que é a última localização conhecida pelo provedor)
         val currentLocation = locationManager.getLastKnownLocation(locationProvider)
@@ -94,5 +97,34 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         val currentLocationLatLng = LatLng(currentLocation.latitude, currentLocation.longitude)
         mMap.addMarker(MarkerOptions().position(currentLocationLatLng).title("Você está aqui!"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocationLatLng))
+    }
+
+    private fun requestLocationPermission() {
+        ActivityCompat.requestPermissions(
+            // Activity que está solicitando, pois ela receberá o resultado
+            this,
+            // Lista de permissões que serão solicitadas
+            arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ),
+            // Um código numérico qualquer para sabermos a origem da solicitação
+            1
+        )
+    }
+
+    // Preparamos o resultado das permissões solicitadas
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        if (requestCode == 1
+            && (grantResults[0] == PackageManager.PERMISSION_GRANTED
+                    || grantResults[1] == PackageManager.PERMISSION_GRANTED)) {
+            startLocationService()
+        }
     }
 }
