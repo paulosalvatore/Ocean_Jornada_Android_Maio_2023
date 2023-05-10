@@ -1,7 +1,13 @@
 package com.oceanbrasil.ocean_jornada_android_maio_2023
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -44,5 +50,49 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         val masp = LatLng(-23.56145468796075, -46.65589196747173)
         mMap.addMarker(MarkerOptions().position(masp).title("MASP (São Paulo)"))
         mMap.moveCamera(CameraUpdateFactory.newLatLng(masp))
+
+        // Inicializar o sensor de localização
+        startLocationService()
+    }
+
+    private fun startLocationService() {
+        // Checa se tem a permissão de acessar a localização
+        if (ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Exibe uma mensagem solicitando a permissão da localização
+            Toast.makeText(this, "Permita a localização.", Toast.LENGTH_LONG).show()
+
+            // Encerra a execução da função, pois não temos permissão para ver a localização
+            return
+        }
+
+        // Acessar o serviço de localização do dispositivo
+        val locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
+
+        // Definimos um provedor de localização, geralmente NETWORK (placa de internet) ou GPS (localização)
+        val locationProvider = LocationManager.GPS_PROVIDER
+
+        // Pegamos a localização atual (que é a última localização conhecida pelo provedor)
+        val currentLocation = locationManager.getLastKnownLocation(locationProvider)
+
+        // Caso não tenha localização conhecida
+        if (currentLocation == null) {
+            // Exibe uma mensagem dizendo que não encontrou a localização
+            Toast.makeText(this, "Nenhuma localização encontrada.", Toast.LENGTH_LONG).show()
+
+            // Encerramos a execução da função, pois não tem localização conhecida
+            return
+        }
+
+        // Adicionamos uma marca e movemos a câmera para a localização atual do sensor
+        val currentLocationLatLng = LatLng(currentLocation.latitude, currentLocation.longitude)
+        mMap.addMarker(MarkerOptions().position(currentLocationLatLng).title("Você está aqui!"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocationLatLng))
     }
 }
