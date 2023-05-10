@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Ocean_Jornada_Android_Maio_2023</string>
+    <string name="title_activity_treasure_hunt">TreasureHuntActivity</string>
 </resources>
