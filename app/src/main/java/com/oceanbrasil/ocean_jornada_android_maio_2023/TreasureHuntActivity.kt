@@ -41,8 +41,8 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
 
         // Add a marker in Sydney and move the camera
-        val sydney = LatLng(-34.0, 151.0)
-        mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val masp = LatLng(-23.56145468796075, -46.65589196747173)
+        mMap.addMarker(MarkerOptions().position(masp).title("MASP (São Paulo)"))
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(masp))
     }
 }
