@@ -21,6 +21,8 @@ object ApiRepository {
         }
         .build()
 
+    private val hintsService: HintsService
+
     init {
         // Prepara o Retrofit para ser usado
         val retrofit = Retrofit.Builder()
@@ -30,8 +32,10 @@ object ApiRepository {
             .build()
 
         // Prepara o HintsService para ser usado, a partir do retrofit
-        val hintsService = retrofit.create(HintsService::class.java)
+        hintsService = retrofit.create(HintsService::class.java)
+    }
 
+    fun listHints(callback: HintCallback) {
         // Cria a chamada que irá ser executada para listar as dicas que estão na API
         val call = hintsService.listHints()
 
@@ -45,6 +49,13 @@ object ApiRepository {
                 // Podemos utilizar a informação contida em `response` para ter
                 // os resultados
                 Log.d("API_REPOSITORY", "Resposta recebida com sucesso!")
+
+                val body: HintsApiResult? = response.body()
+                if (response.isSuccessful && body != null) {
+                    val records = body.records
+                    val hints = records.map { it.fields }
+                    callback.onResult(hints)
+                }
             }
 
             // Em caso de falha, traz o erro para o `onFailure`
@@ -55,4 +66,8 @@ object ApiRepository {
             }
         })
     }
+}
+
+interface HintCallback {
+    fun onResult(hints: List<Hint>)
 }
