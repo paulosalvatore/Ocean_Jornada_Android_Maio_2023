@@ -22,6 +22,8 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityTreasureHuntBinding
 
+    private val apiRepository = ApiRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
