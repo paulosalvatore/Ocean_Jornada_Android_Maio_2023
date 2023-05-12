@@ -1,6 +1,7 @@
 package com.oceanbrasil.ocean_jornada_android_maio_2023
 
 import android.util.Log
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -8,12 +9,24 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiRepository {
+    private const val API_KEY = "patjuAoOFil6id2zw.c6383a281a1108a09e49c579b4065732e46b887881b6e9fda7e1657ea61b6b4d"
+
+    private val httpClient = OkHttpClient.Builder()
+        .addInterceptor { chain ->
+            val original = chain.request()
+            val requestBuilder = original.newBuilder()
+                .header("Authorization", "Bearer $API_KEY")
+            val request = requestBuilder.build()
+            chain.proceed(request)
+        }
+        .build()
+
     init {
         // Prepara o Retrofit para ser usado
         val retrofit = Retrofit.Builder()
             .baseUrl("https://api.airtable.com/v0/appouUwOyyKLH6Eyz/")
             .addConverterFactory(GsonConverterFactory.create())
-            // TODO: Implementar Autorização
+            .client(httpClient)
             .build()
 
         // Prepara o HintsService para ser usado, a partir do retrofit
