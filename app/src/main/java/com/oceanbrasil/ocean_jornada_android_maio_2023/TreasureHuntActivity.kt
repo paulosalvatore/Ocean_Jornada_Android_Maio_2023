@@ -2,6 +2,7 @@ package com.oceanbrasil.ocean_jornada_android_maio_2023
 
 import android.Manifest
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,11 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
+        binding.fab.setOnClickListener {
+            val hintsListIntent = Intent(this, HintsListActivity::class.java)
+            startActivity(hintsListIntent)
+        }
     }
 
     /**
