@@ -20,9 +20,9 @@ class HintsListActivity : AppCompatActivity() {
         // Inicializar Adapter (Precisamos criar o Adapter)
         // TODO: Substituir listOf pela chamada na API
         val hintsList = listOf(
-            Hint(1, "Local da Dica", 10.0, 10.0),
-            Hint(2, "Local da Dica", 10.0, 10.0),
-            Hint(3, "Local da Dica", 10.0, 10.0)
+            Hint(1, "Brigadeiro", 10.0, 70.0),
+            Hint(2, "Trianon Masp", 20.0, 60.0),
+            Hint(3, "Paraíso", 30.0, 40.0)
         )
         val adapter = HintsListAdapter(hintsList)
         rvHints.adapter = adapter
