@@ -23,6 +23,8 @@ object PushNotificationManager {
             // notificationId is a unique int for each notification that you must define
             notify(notificationId, builder.build())
         }
+
+        // TODO: Melhorar implementação (https://developer.android.com/develop/ui/views/notifications/build-notification#kts)
     }
 
     private fun createNotificationChannel(context: Context) {
