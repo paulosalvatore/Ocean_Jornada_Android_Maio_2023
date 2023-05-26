@@ -30,11 +30,6 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityTreasureHuntBinding
 
-    // TODO: Implementar ViewModel
-
-    // TODO: Extrair
-    private val apiRepository = ApiRepository
-
     private lateinit var hintsViewModel: HintsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,22 +69,16 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         // Inicializar o sensor de localização
         startLocationService()
 
-        // TODO: Pegar os dados do ViewModel
-        ApiRepository.listHints(object : HintCallback {
-            override fun onResult(hintApiModels: List<HintApiModel>) {
-                // Assim que as dicas forem recebidas, essa função será executada
-
-                // Para cada uma das dicas, adiciona um marker no mapa
-                hintApiModels.forEach { hint ->
-                    val marker = LatLng(hint.latitude, hint.longitude)
-                    mMap.addMarker(
-                        MarkerOptions()
-                            .position(marker)
-                            .title("Dica ${hint.id}: ${hint.name}")
-                    )
-                }
+        hintsViewModel.hints.observe(this) { hints ->
+            hints.forEach { hint ->
+                val marker = LatLng(hint.latitude, hint.longitude)
+                mMap.addMarker(
+                    MarkerOptions()
+                        .position(marker)
+                        .title("Dica ${hint.id}: ${hint.name}")
+                )
             }
-        })
+        }
     }
 
     private fun startLocationService() {
