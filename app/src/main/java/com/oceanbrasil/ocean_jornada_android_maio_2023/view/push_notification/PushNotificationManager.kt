@@ -1,4 +1,4 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023
+package com.oceanbrasil.ocean_jornada_android_maio_2023.view.push_notification
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -6,6 +6,7 @@ import android.content.Context
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
+import com.oceanbrasil.ocean_jornada_android_maio_2023.R
 
 object PushNotificationManager {
     fun sendPushNotication(context: Context, title: String, body: String) {

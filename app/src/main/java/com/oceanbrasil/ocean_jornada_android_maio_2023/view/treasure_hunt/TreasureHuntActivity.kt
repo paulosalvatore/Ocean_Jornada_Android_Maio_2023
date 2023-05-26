@@ -1,4 +1,4 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023
+package com.oceanbrasil.ocean_jornada_android_maio_2023.view.treasure_hunt
 
 import android.Manifest
 import android.content.Context
@@ -16,6 +16,11 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.ApiRepository
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.Hint
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.HintCallback
+import com.oceanbrasil.ocean_jornada_android_maio_2023.view.hints.HintsListActivity
+import com.oceanbrasil.ocean_jornada_android_maio_2023.R
 import com.oceanbrasil.ocean_jornada_android_maio_2023.databinding.ActivityTreasureHuntBinding
 
 class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -60,7 +65,7 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         // Inicializar o sensor de localização
         startLocationService()
 
-        apiRepository.listHints(object : HintCallback {
+        ApiRepository.listHints(object : HintCallback {
             override fun onResult(hints: List<Hint>) {
                 // Assim que as dicas forem recebidas, essa função será executada
 

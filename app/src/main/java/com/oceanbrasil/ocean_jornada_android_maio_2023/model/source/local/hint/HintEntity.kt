@@ -1,4 +1,4 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023.database
+package com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.local.hint
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

@@ -1,8 +1,9 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023
+package com.oceanbrasil.ocean_jornada_android_maio_2023.view.push_notification
 
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.oceanbrasil.ocean_jornada_android_maio_2023.view.push_notification.PushNotificationManager
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
     companion object {

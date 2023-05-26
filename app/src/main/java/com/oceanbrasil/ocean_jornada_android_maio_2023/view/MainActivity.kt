@@ -1,4 +1,4 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023
+package com.oceanbrasil.ocean_jornada_android_maio_2023.view
 
 import android.Manifest
 import android.content.Intent
@@ -8,6 +8,8 @@ import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.oceanbrasil.ocean_jornada_android_maio_2023.R
+import com.oceanbrasil.ocean_jornada_android_maio_2023.view.treasure_hunt.TreasureHuntActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

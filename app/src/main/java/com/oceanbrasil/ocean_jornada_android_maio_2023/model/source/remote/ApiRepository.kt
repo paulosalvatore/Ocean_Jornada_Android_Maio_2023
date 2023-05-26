@@ -1,6 +1,8 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023
+package com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote
 
 import android.util.Log
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintsApiResult
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.service.HintsService
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -66,8 +68,4 @@ object ApiRepository {
             }
         })
     }
-}
-
-interface HintCallback {
-    fun onResult(hints: List<Hint>)
 }

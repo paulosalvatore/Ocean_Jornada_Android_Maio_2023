@@ -1,11 +1,13 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023
+package com.oceanbrasil.ocean_jornada_android_maio_2023.view.hints
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.oceanbrasil.ocean_jornada_android_maio_2023.database.AppDatabase
-import com.oceanbrasil.ocean_jornada_android_maio_2023.database.HintEntity
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.Hint
+import com.oceanbrasil.ocean_jornada_android_maio_2023.R
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.local.AppDatabase
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.local.hint.HintEntity
 
 class HintsListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
