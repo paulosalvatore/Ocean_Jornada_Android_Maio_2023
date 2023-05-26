@@ -17,7 +17,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.ApiRepository
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.Hint
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintApiModel
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.HintCallback
 import com.oceanbrasil.ocean_jornada_android_maio_2023.view.hints.HintsListActivity
 import com.oceanbrasil.ocean_jornada_android_maio_2023.R
@@ -66,11 +66,11 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         startLocationService()
 
         ApiRepository.listHints(object : HintCallback {
-            override fun onResult(hints: List<Hint>) {
+            override fun onResult(hintApiModels: List<HintApiModel>) {
                 // Assim que as dicas forem recebidas, essa função será executada
 
                 // Para cada uma das dicas, adiciona um marker no mapa
-                hints.forEach { hint ->
+                hintApiModels.forEach { hint ->
                     val marker = LatLng(hint.latitude, hint.longitude)
                     mMap.addMarker(
                         MarkerOptions()

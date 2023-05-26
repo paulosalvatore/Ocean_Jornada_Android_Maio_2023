@@ -5,13 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.Hint
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintApiModel
 import com.oceanbrasil.ocean_jornada_android_maio_2023.R
 
-class HintsListAdapter(private val items: List<Hint>) : RecyclerView.Adapter<HintsListAdapter.ViewHolder>() {
+class HintsListAdapter(private val items: List<HintApiModel>) : RecyclerView.Adapter<HintsListAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bindView(item: Hint) {
+        fun bindView(item: HintApiModel) {
             val tvHintName = itemView.findViewById<TextView>(R.id.tvHintName)
 
             tvHintName.text = "Dica ${item.id}: ${item.name}"

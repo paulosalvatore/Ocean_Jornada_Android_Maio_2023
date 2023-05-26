@@ -2,5 +2,5 @@ package com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.enti
 
 data class HintsRecord(
     val id: String,
-    val fields: Hint
+    val fields: HintApiModel
 )

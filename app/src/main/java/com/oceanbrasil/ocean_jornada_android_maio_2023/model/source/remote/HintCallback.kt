@@ -1,7 +1,7 @@
 package com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote
 
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.Hint
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintApiModel
 
 interface HintCallback {
-    fun onResult(hints: List<Hint>)
+    fun onResult(hintApiModels: List<HintApiModel>)
 }

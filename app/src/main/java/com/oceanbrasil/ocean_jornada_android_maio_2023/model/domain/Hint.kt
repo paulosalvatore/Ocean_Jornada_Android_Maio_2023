@@ -1,4 +1,4 @@
-package com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities
+package com.oceanbrasil.ocean_jornada_android_maio_2023.model.domain
 
 data class Hint(
     val id: Int,

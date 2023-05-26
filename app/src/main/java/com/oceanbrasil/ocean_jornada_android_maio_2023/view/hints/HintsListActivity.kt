@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.Hint
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintApiModel
 import com.oceanbrasil.ocean_jornada_android_maio_2023.R
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.local.AppDatabase
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.local.hint.HintEntity
@@ -49,7 +49,7 @@ class HintsListActivity : AppCompatActivity() {
 //                    Hint(3, "Paraíso", 30.0, 40.0)
 //                )
                 val hintsList = hintsEntities.map {
-                    Hint(it.id, it.name, it.latitude, it.longitude)
+                    HintApiModel(it.id, it.name, it.latitude, it.longitude)
                 }
                 val adapter = HintsListAdapter(hintsList)
                 rvHints.adapter = adapter
