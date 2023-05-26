@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
+import androidx.lifecycle.ViewModelProvider
 
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -22,6 +23,7 @@ import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.HintC
 import com.oceanbrasil.ocean_jornada_android_maio_2023.view.hints.HintsListActivity
 import com.oceanbrasil.ocean_jornada_android_maio_2023.R
 import com.oceanbrasil.ocean_jornada_android_maio_2023.databinding.ActivityTreasureHuntBinding
+import com.oceanbrasil.ocean_jornada_android_maio_2023.viewmodel.HintsViewModel
 
 class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -33,11 +35,15 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
     // TODO: Extrair
     private val apiRepository = ApiRepository
 
+    private lateinit var hintsViewModel: HintsViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityTreasureHuntBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        hintsViewModel = ViewModelProvider(this).get(HintsViewModel::class.java)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
