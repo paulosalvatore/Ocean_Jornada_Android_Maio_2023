@@ -28,6 +28,9 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityTreasureHuntBinding
 
+    // TODO: Implementar ViewModel
+
+    // TODO: Extrair
     private val apiRepository = ApiRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,6 +68,7 @@ class TreasureHuntActivity : AppCompatActivity(), OnMapReadyCallback {
         // Inicializar o sensor de localização
         startLocationService()
 
+        // TODO: Pegar os dados do ViewModel
         ApiRepository.listHints(object : HintCallback {
             override fun onResult(hintApiModels: List<HintApiModel>) {
                 // Assim que as dicas forem recebidas, essa função será executada
