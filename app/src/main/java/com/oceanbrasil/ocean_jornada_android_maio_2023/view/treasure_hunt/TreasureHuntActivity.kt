@@ -17,9 +17,6 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.ApiRepository
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintApiModel
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.HintCallback
 import com.oceanbrasil.ocean_jornada_android_maio_2023.view.hints.HintsListActivity
 import com.oceanbrasil.ocean_jornada_android_maio_2023.R
 import com.oceanbrasil.ocean_jornada_android_maio_2023.databinding.ActivityTreasureHuntBinding

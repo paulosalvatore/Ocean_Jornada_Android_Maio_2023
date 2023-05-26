@@ -10,7 +10,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-object ApiRepository {
+object HintsRemoteDataSource {
     private const val API_KEY = "patjuAoOFil6id2zw.c6383a281a1108a09e49c579b4065732e46b887881b6e9fda7e1657ea61b6b4d"
 
     private val httpClient = OkHttpClient.Builder()
