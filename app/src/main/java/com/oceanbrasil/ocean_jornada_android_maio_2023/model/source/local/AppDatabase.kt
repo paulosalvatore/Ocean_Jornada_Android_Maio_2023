@@ -41,7 +41,7 @@ abstract class AppDatabase : RoomDatabase() {
                 AppDatabase::class.java,
                 "app_database"
             )
-                .addCallback(onCreateCallback)
+//                .addCallback(onCreateCallback)
                 .build().also { instance = it }
         }
     }
