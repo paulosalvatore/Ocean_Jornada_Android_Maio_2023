@@ -4,9 +4,8 @@ import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.domain.Hint
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.local.HintsLocalDataSource
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.HintsRemoteDataSource
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.HintCallback
-import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintApiModel
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.HintsRemoteDataSource
 
 class HintsRepository(application: Application) {
     private val hintsRemoteDataSource = HintsRemoteDataSource
@@ -27,5 +26,10 @@ class HintsRepository(application: Application) {
                 }.start()
             }
         })
+
+        Thread {
+            val hintsFromDb = hintsLocalDataSource.findAll()
+            hints.postValue(hintsFromDb)
+        }.start()
     }
 }
