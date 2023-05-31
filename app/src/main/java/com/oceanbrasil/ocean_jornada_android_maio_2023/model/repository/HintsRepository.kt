@@ -17,17 +17,11 @@ class HintsRepository(application: Application) {
 
     init {
         hintsRemoteDataSource.listHints(object : HintCallback {
-            override fun onResult(hintApiModels: List<HintApiModel>) {
-                val hintsDomain = hintApiModels.map {
-                    Hint(it.id, it.name, it.latitude, it.longitude)
-                }
-
+            override fun onResult(hintsDomain: List<Hint>) {
                 Thread {
                     hintsLocalDataSource.insertAll(hintsDomain)
 
                     val hintsFromDb = hintsLocalDataSource.findAll()
-
-                    print(hintsFromDb)
 
                     hints.postValue(hintsFromDb)
                 }.start()

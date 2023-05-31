@@ -1,6 +1,7 @@
 package com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote
 
 import android.util.Log
+import com.oceanbrasil.ocean_jornada_android_maio_2023.model.domain.Hint
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.entities.HintsApiResult
 import com.oceanbrasil.ocean_jornada_android_maio_2023.model.source.remote.service.HintsService
 import okhttp3.OkHttpClient
@@ -55,8 +56,11 @@ object HintsRemoteDataSource {
                 val body: HintsApiResult? = response.body()
                 if (response.isSuccessful && body != null) {
                     val records = body.records
-                    val hints = records.map { it.fields }
-                    callback.onResult(hints)
+                    val hintsApiModels = records.map { it.fields }
+                    val hintsDomain = hintsApiModels.map {
+                        Hint(it.id, it.name, it.latitude, it.longitude)
+                    }
+                    callback.onResult(hintsDomain)
                 }
             }
 
