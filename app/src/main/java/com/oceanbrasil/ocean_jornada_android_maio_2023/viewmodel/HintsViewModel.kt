@@ -7,4 +7,8 @@ class HintsViewModel : ViewModel() {
     private val hintsRepository = HintsRepository
 
     val hints = hintsRepository.hints
+
+    // TODO: Implementar
+//        val appDatabase = AppDatabase.getInstance(this)
+//        val hintDao = appDatabase.hintDao()
 }
